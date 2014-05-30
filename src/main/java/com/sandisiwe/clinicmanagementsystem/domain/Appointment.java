@@ -7,10 +7,13 @@
 package com.sandisiwe.clinicmanagementsystem.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -22,8 +25,8 @@ public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String appointmentDate;
-    private String appointmentTime;
+    private Date appointmentDate;
+    private Timestamp appointmentTime;
     private int duration;
     private String reason;
     
@@ -42,9 +45,11 @@ public class Appointment implements Serializable {
     
     public static class Builder {
        
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
-        private String appointmentDate;
-        private String appointmentTime;
+        private Date appointmentDate;
+        private Timestamp appointmentTime;
         private int duration;
         private String reason;
         
@@ -53,12 +58,12 @@ public class Appointment implements Serializable {
             return this;
         }
         
-        public Builder date(String value){
+        public Builder date(Date value){
             this.appointmentDate = value;
             return this;
         }
         
-        public Builder time(String value){
+        public Builder time(Timestamp value){
             this.appointmentTime = value;
             return this;
         }
@@ -78,12 +83,12 @@ public class Appointment implements Serializable {
         return id;
     }
     
-    public String getDate(){
+    public Date getDate(){
         return appointmentDate;
     }
     
     
-    public String getTime(){
+    public Timestamp getTime(){
         return appointmentTime;
     }
 

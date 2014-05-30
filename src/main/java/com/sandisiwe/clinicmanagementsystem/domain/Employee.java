@@ -56,6 +56,7 @@ public class Employee implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id")
     List<Administrator> admins;
+    public Object getId;
     
     private Employee() {
         

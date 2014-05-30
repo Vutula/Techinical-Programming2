@@ -7,6 +7,8 @@
 package com.sandisiwe.clinicmanagementsystem.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +24,8 @@ public class Operation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String operationDate;
-    private String operationTime;
+    private Date operationDate;
+    private Timestamp operationTime;
     
     private Operation(Builder builder){
         
@@ -40,20 +42,20 @@ public class Operation implements Serializable {
     public static class Builder{
         
     private Long id;
-    private String operationDate;
-    private String operationTime;
+    private Date operationDate;
+    private Timestamp operationTime;
     
     public Builder id(Long value) {
             id = value;
             return this;
         }
     
-    public Builder operationDate(String value) {
+    public Builder operationDate(Date value) {
             operationDate = value;
             return this;
         }
     
-    public Builder operationTime(String value) {
+    public Builder operationTime(Timestamp value) {
             operationTime = value;
             return this;
         }
@@ -64,11 +66,11 @@ public class Operation implements Serializable {
         return id;
     }
     
-    public String getOperationDate(){
+    public Date getOperationDate(){
         return operationDate;
     }
     
-    public String getOperationTime(){
+    public Timestamp getOperationTime(){
         return operationTime;
     }
 

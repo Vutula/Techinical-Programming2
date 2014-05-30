@@ -10,6 +10,7 @@ import com.sandisiwe.clinicmanagementsystem.domain.Employee.Builder;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Bill implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    //@Column(unique=true)
     private String dateSent;
     private double amountInsured;
     private String billStatus; 
@@ -37,7 +39,7 @@ public class Bill implements Serializable {
         billStatus = builder.billStatus;
         }
 
-    public Bill() {
+    private Bill() {
     }
     
     public static class Builder{

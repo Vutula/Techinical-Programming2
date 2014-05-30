@@ -7,11 +7,14 @@
 package com.sandisiwe.clinicmanagementsystem.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -32,6 +35,10 @@ public class Patient implements Serializable {
     @Embedded
     private Discharge discharge;
     
+   @OneToMany
+   @JoinColumn(name = "patientId")
+   private List<Appointment> appointment;
+    
     private Patient(Builder builder){
         
         id = builder.id;
@@ -40,6 +47,7 @@ public class Patient implements Serializable {
         sex = builder.sex;
         address = builder.address;
         discharge = builder.discharge;
+        appointment = builder.appointment;
         
         
     }
@@ -57,6 +65,9 @@ public class Patient implements Serializable {
     private String sex;
     private String city;
     private Discharge discharge;
+    private List<Appointment> appointment;
+
+       
     
     public Builder id(Long value){
         
@@ -105,7 +116,22 @@ public class Patient implements Serializable {
             return this;
         }
     
+    public Patient createInstance() {
+            return new Patient(this);
+        }
     
+     
+      public Builder clone(Patient value) {
+            this.id = value.id;
+            this.firstname = value.firstname;
+            this.lastname = value.lastname;
+            this.sex = value.sex;
+            this.address = value.address;
+            this.discharge = value.discharge;
+            this.appointment = value.appointment;
+            
+            return this;
+        }
  }
 
     public Long getId() {
@@ -133,9 +159,13 @@ public class Patient implements Serializable {
     }
     
     public Discharge getDischarge() {
-        return discharge;
+       return discharge;
     }
     
+    public List<Appointment> getAppointment() {
+        return appointment;
+    }
+
 
     @Override
     public int hashCode() {

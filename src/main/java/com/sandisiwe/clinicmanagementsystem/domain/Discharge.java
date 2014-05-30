@@ -24,6 +24,9 @@ public class Discharge implements Serializable {
     private Long id;
     private String dischargeDate;
     private String dischargeTime;
+
+    public Discharge() {
+    }
     
     private Discharge(Builder builder){
         
@@ -33,9 +36,6 @@ public class Discharge implements Serializable {
         
     }
     
-    private Discharge(){
-        
-    }
     
     public static class Builder{
         

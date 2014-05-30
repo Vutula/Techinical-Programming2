@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 
-package com.sandisiwe.clinicmanagementsystem.app.conf;
+package com.sandisiwe.clinicmanagementsystem.test.Services;
 
 /**
  *
  * @author sandisiwe
  */
+
+
+import com.sandisiwe.clinicmanagementsystem.Application;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +24,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -29,16 +33,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author boniface
  */
 @Configuration
-@ComponentScan("com.kabaso.askweb")
+
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.kabaso.askweb.respository")
-public class ConnectionConfig {
+@ComponentScan(basePackageClasses = Application.class, excludeFilters = @ComponentScan.Filter({Controller.class, Configuration.class}))
+@EnableJpaRepositories(basePackages = "com.sandisiwe.clinicmanagementsystem.respository")
+public class ConnectionConfigTest {
 
     @Bean
     public DataSource dataSource() {
         BasicDataSource ds = new org.apache.commons.dbcp.BasicDataSource();
         ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        ds.setUrl("jdbc:derby://localhost:1527/sample");
+        ds.setUrl("jdbc:derby://localhost:1527/sample [app on APP]");
         ds.setUsername("app");
         ds.setPassword("app");
         return ds;
@@ -50,7 +55,7 @@ public class ConnectionConfig {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("com.kabaso.askweb.domain");
+        lef.setPackagesToScan("com.sandisiwe.clinicmanagementsystem.domain");
         return lef;
     }
 

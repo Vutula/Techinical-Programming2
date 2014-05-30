@@ -6,22 +6,14 @@
 
 package com.sandisiwe.clinicmanagementsystem.services;
 
+import com.sandisiwe.clinicmanagementsystem.domain.Nurse;
 import java.util.List;
 
 /**
  *
  * @author sandisiwe
  */
-
-public interface Services<S, ID> {
-
-    public S find(ID id);
-
-    public S persist(S entity);
-
-    public S merge(S entity);
-
-    public void remove(S entity);
-
-    public List<S> findAll();
+public interface NurseService {
+    
+    public List<Nurse> getNurses();
 }
