@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.sandisiwe.designpatterns.behavioural.templateMethod;
+
+/**
+ *
+ * @author sandisiwe
+ */
+public class CheeseBurgerMeal extends Meal{
+
+    @Override
+    public String prepareIngredient() {
+        return("Getting ground beef and Cheese");
+    }
+
+    @Override
+    public String cook() {
+        return("Cooking ground beef in pan");
+    }
+
+    @Override
+    public String eat(){
+        return("The Cheese Burgers are tasty");
+    }
+    
+    @Override
+    public String cleanUp() {
+        return("Doing the dishes");
+    }
+    
+}
+
